@@ -11,8 +11,8 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("getintodevops/hellonode")
-        sh 'docker build -f "getintodevops/hellonode" -t sindhu27kv/dockerhub:myfirstimagepush'
+        app = docker.build("sindhu27kv/hellonode")
+        /*sh 'docker build -f "getintodevops/hellonode" -t sindhu27kv/dockerhub:myfirstimagepush'
     }
 
     stage('Test image') {
@@ -31,8 +31,7 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                         app.push("${env.BUILD_NUMBER}")
-            sh 'docker push sindhu27kv/dockerhub:myfirstimagepush'
-            /*app.push("latest")
+                         app.push("latest")
         }
     }
 }
