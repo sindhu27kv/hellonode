@@ -11,7 +11,3 @@ HEALTHCHECK --interval=5s \
 
 # tell docker what port to expose
 EXPOSE 8000
-# Setup users and groups
-RUN groupadd -g ${JENKINSGID} jenkins
-RUN groupmod -g ${DOCKERGID} docker
-RUN useradd -c "Jenkins user" -g ${JENKINSGID} -G ${DOCKERGID} -M -N -u ${JENKINSUID} jenkins
